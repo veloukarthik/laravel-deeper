@@ -10,7 +10,7 @@ class PostController extends Controller
     public function index()
     {
         try{
-            $posts = Posts::all();
+            $posts = Posts::IsPublished()->get();
             return response()->json(data: ['message'=>'Post data retrieved successfully.','data'=> $posts], status: 200);
         }
         catch(\Exception $e){
@@ -22,6 +22,7 @@ class PostController extends Controller
     {
         try{
             $post = Posts::find($id);
+            $this->authorize('view', $post);
             if($post){
                 return response()->json(['message'=>'Post data retrieved successfully.','data'=> $post], 200);
             }
