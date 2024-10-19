@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-
+use App\Models\Scopes\ActiveUserScope;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $with = ['posts'];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -32,7 +34,13 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function boot(){
+        parent::boot();
+        static::addGlobalScope(new ActiveUserScope);
+    }
     /**
      * The attributes that should be cast.
      *
@@ -42,4 +50,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Posts::class);
+    }
 }
