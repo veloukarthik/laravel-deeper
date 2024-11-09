@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 use App\Repositories\PostsRepository;
+use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
@@ -37,6 +38,7 @@ class PostController extends Controller
         try {
             $post = Posts::find($id);
             // $this->authorize('view', $post);
+            Log::info('Posts found');
             if ($post) {
 
                 return response()->json(['message' => 'Post data retrieved successfully.', 'data' => $post], 200);
