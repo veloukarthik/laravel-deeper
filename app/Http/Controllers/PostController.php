@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 use App\Models\Posts;
 use Illuminate\Http\Request;
-use Elasticsearch\Client;
+use App\Repositories\PostsRepository;
 
 class PostController extends Controller
 {
+
+    protected $postsRepository;
+    public function __construct(PostsRepository $postsRepository){
+        $this->postsRepository = $postsRepository;
+    }
     //
     public function index()
     {
         try {
-            $posts = Posts::IsPublished()->get();
+            $posts = $this->postsRepository->getAllPosts();
             return response()->json(data: ['message' => 'Post data retrieved successfully.', 'data' => $posts], status: 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -31,40 +36,16 @@ class PostController extends Controller
     {
         try {
             $post = Posts::find($id);
-            $this->authorize('view', $post);
+            // $this->authorize('view', $post);
             if ($post) {
-                $this->indexPost($post);
 
-                // Search posts
-                $results = $this->searchPosts('your search query');
-                return response()->json(['message' => 'Post data retrieved successfully.', 'data' => $post, "result" => $results], 200);
+                return response()->json(['message' => 'Post data retrieved successfully.', 'data' => $post], 200);
             } else {
                 return response()->json(['message' => 'Post not found'], 404);
             }
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
-    }
-
-    public function searchPosts($query)
-    {
-        $response = app('Elasticsearch')->search([
-            'index' => 'posts',
-            'body' => [
-                'query' => [
-                    'multi_match' => [
-                        'query' => $query,
-                        'fields' => ['title', 'content'],
-                    ]
-                ]
-            ]
-        ]);
-
-        $posts = collect($response['hits']['hits'])->map(function ($hit) {
-            return $hit['_source'];
-        });
-
-        return $posts;
     }
 
 

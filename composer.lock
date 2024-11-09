@@ -4,8 +4,219 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2edd888f18e2dd5d77ae6b7aac10ed13",
+    "content-hash": "0c57b8039b410f7e682e73a8a922d3c6",
     "packages": [
+        {
+            "name": "babenkoivan/elastic-adapter",
+            "version": "v3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/babenkoivan/elastic-adapter.git",
+                "reference": "f2bd15d9d57d8631cf8f86539d815e749109d499"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/babenkoivan/elastic-adapter/zipball/f2bd15d9d57d8631cf8f86539d815e749109d499",
+                "reference": "f2bd15d9d57d8631cf8f86539d815e749109d499",
+                "shasum": ""
+            },
+            "require": {
+                "babenkoivan/elastic-client": "^2.1",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "dg/bypass-finals": "^1.3",
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "orchestra/testbench": "^8.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Elastic\\Adapter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Babenko",
+                    "email": "babenko.i.a@gmail.com"
+                }
+            ],
+            "description": "Adapter for official PHP Elasticsearch client",
+            "keywords": [
+                "adapter",
+                "client",
+                "elastic",
+                "elasticsearch",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/babenkoivan/elastic-adapter/issues",
+                "source": "https://github.com/babenkoivan/elastic-adapter/tree/v3.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/ivanbabenko",
+                    "type": "ko-fi"
+                },
+                {
+                    "url": "https://paypal.me/babenkoi",
+                    "type": "paypal"
+                }
+            ],
+            "time": "2023-04-25T07:13:38+00:00"
+        },
+        {
+            "name": "babenkoivan/elastic-client",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/babenkoivan/elastic-client.git",
+                "reference": "c3f016a1b33cf1e378fffb64f8aeed37be228234"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/babenkoivan/elastic-client/zipball/c3f016a1b33cf1e378fffb64f8aeed37be228234",
+                "reference": "c3f016a1b33cf1e378fffb64f8aeed37be228234",
+                "shasum": ""
+            },
+            "require": {
+                "elasticsearch/elasticsearch": "^8.0",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "orchestra/testbench": "^8.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Elastic\\Client\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Elastic\\Client\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Babenko",
+                    "email": "babenko.i.a@gmail.com"
+                }
+            ],
+            "description": "The official PHP Elasticsearch client integrated with Laravel",
+            "keywords": [
+                "client",
+                "elastic",
+                "elasticsearch",
+                "laravel",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/babenkoivan/elastic-client/issues",
+                "source": "https://github.com/babenkoivan/elastic-client/tree/v2.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/ivanbabenko",
+                    "type": "ko-fi"
+                },
+                {
+                    "url": "https://paypal.me/babenkoi",
+                    "type": "paypal"
+                }
+            ],
+            "time": "2023-03-04T08:16:47+00:00"
+        },
+        {
+            "name": "babenkoivan/elastic-migrations",
+            "version": "v3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/babenkoivan/elastic-migrations.git",
+                "reference": "39dc516a9350fced32178244d0c1429a92fcceed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/babenkoivan/elastic-migrations/zipball/39dc516a9350fced32178244d0c1429a92fcceed",
+                "reference": "39dc516a9350fced32178244d0c1429a92fcceed",
+                "shasum": ""
+            },
+            "require": {
+                "babenkoivan/elastic-adapter": "^3.2",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "dg/bypass-finals": "^1.3",
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "orchestra/testbench": "^8.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Elastic\\Migrations\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Elastic\\Migrations\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Babenko",
+                    "email": "babenko.i.a@gmail.com"
+                }
+            ],
+            "description": "Elasticsearch migrations for Laravel",
+            "keywords": [
+                "elastic",
+                "elasticsearch",
+                "laravel",
+                "migrations",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/babenkoivan/elastic-migrations/issues",
+                "source": "https://github.com/babenkoivan/elastic-migrations/tree/v3.4.1"
+            },
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/ivanbabenko",
+                    "type": "ko-fi"
+                },
+                {
+                    "url": "https://paypal.me/babenkoi",
+                    "type": "paypal"
+                }
+            ],
+            "time": "2024-05-10T06:34:41+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.1",
