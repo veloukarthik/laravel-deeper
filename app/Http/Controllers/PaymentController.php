@@ -12,7 +12,7 @@ class PaymentController extends Controller
     public function makePayment($amount)
     {
         // Payment processing logic...
-        Log::info("Initiating payment of: " . $amount); 
+        Log::channel('single')->info("Initiating payment of: " . $amount); 
 
         // Trigger the event
         event(new PaymentProcessed($amount));

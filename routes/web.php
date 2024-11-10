@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/payments/{amount}', 'PaymentController@makePayment');
+Route::get('/payments/{amount}', 'PaymentController@makePayment')->middleware('checkIp');
