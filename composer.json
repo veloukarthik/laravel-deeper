@@ -9,6 +9,7 @@
         "babenkoivan/elastic-client": "^2.1",
         "babenkoivan/elastic-migrations": "^3.4",
         "elasticsearch/elasticsearch": "^8.15",
+        "everapi/currencyapi-php": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/passport": "^12.3",

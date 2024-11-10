@@ -5,7 +5,8 @@ use App\Models\Posts;
 use Illuminate\Http\Request;
 use App\Repositories\PostsRepository;
 use Illuminate\Support\Facades\Log;
-
+use App\Helpers\Helpers;
+use App\Services\CurrencyConverter;
 class PostController extends Controller
 {
 
@@ -33,9 +34,13 @@ class PostController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($id, CurrencyConverter $converter)
     {
         try {
+
+
+            $result = $converter->convert($id, 'USD', 'INR');
+            return $result;
             $post = Posts::find($id);
             // $this->authorize('view', $post);
             Log::info('Posts found');
@@ -54,6 +59,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         try {
+            $request->validate([
+                'title' => 'required|string|max:255',
+                'body' => 'required|string',
+            ]);
+            $request['slug'] = Helpers::generateSlug($request->title);
             $post = Posts::create($request->all());
             return response()->json(['message' => 'Post created successfully.', 'data' => $post], 201);
         } catch (\Exception $e) {
@@ -66,6 +76,7 @@ class PostController extends Controller
         try {
             $post = Posts::find($id);
             if ($post) {
+                $request['slug'] = Helpers::generateSlug($request->title);
                 $post->update($request->all());
                 return response()->json(['message' => 'Post updated successfully.', 'data' => $post], 200);
             } else {
