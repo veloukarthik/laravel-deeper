@@ -39,8 +39,9 @@ class PostController extends Controller
         try {
 
 
-            $result = $converter->convert($id, 'USD', 'INR');
-            return $result;
+            // $result = $converter->convert($id, 'USD', 'INR');
+            // return $result;
+            $paymentService = $this->paymentService->createPayment($id);
             $post = Posts::find($id);
             // $this->authorize('view', $post);
             Log::info('Posts found');

@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         App\Providers\ElasticsearchServiceProvider::class,
+        App\Providers\CustomServiceProvider::class,
     ])->toArray(),
 
     /*
