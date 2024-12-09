@@ -8,23 +8,20 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class SendWelcomeEmail implements ShouldQueue
+class SendPaymentReceipt implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     */
-    public function __construct()
+    protected $amount;
+
+    public function __construct($amount)
     {
-        //
+        $this->amount = $amount;
     }
 
-    /**
-     * Execute the job.
-     */
-    public function handle(): void
+    public function handle()
     {
-        //
+        // Logic to send a payment receipt
+        \Log::info("Queued: Sending receipt for payment of $" . $this->amount);
     }
 }

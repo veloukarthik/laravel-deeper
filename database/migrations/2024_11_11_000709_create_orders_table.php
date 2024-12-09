@@ -6,16 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function __construct()
-    {
-        $this->connection = 'mysql2';
-    }
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('sample', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sample');
+        Schema::dropIfExists('orders');
     }
 };

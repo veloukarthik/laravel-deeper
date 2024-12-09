@@ -10,18 +10,18 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PaymentProcessed
+class OrderShipped
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public $amount;
+    public $order;
 
-    public function __construct($amount)
+    public function __construct(Order $order)
     {
-        $this->amount = $amount;
+        $this->order = $order;
     }
 
     /**
